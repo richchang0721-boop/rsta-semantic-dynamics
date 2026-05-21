@@ -447,7 +447,9 @@ The framework explores the possibility that long-horizon semantic stability may 
 # Paper
 
 Full paper:
+
 The complete RSTA research paper is available below:
+
 [Recursive State Transition Architecture (RSTA) Paper](./paper/rsta_paper_v1.pdf)
 
 ---
