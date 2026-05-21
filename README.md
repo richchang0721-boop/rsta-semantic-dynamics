@@ -432,6 +432,14 @@ Future work includes:
 
 ---
 
+## Full Paper
+
+Full research paper:
+
+[Recursive State Transition Architecture (RSTA) Paper](./paper/rsta_paper_v1.pdf)
+
+---
+
 # Research Position
 
 RSTA proposes a semantic dynamics perspective for language modeling.
