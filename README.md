@@ -451,10 +451,8 @@ Full paper:
 ```text
 Recursive State Transition Architecture (RSTA):
 Explicit Semantic Transition Modeling for Transformer-Based Language Systems
-[Recursive State Transition Architecture (RSTA) Paper](./paper/rsta_paper_v1.pdf)
-
 ```
-
+[Recursive State Transition Architecture (RSTA) Paper](./paper/rsta_paper_v1.pdf)
 ---
 
 # Repository Structure
