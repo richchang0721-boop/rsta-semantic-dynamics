@@ -17,6 +17,13 @@ rather than isolated token prediction.
 # Architecture Overview
 
 ![RSTA Architecture](./assets/rsta_architecture.png)
+RSTA augments Transformer systems with explicit semantic state representation, recursive semantic trajectory modeling, and state-conditioned generation.
+
+## Transformer vs. RSTA
+
+![Transformer vs RSTA](./assets/transformer_vs_rsta.png)
+
+Comparison between conventional Transformer-based next-token prediction and RSTA semantic trajectory modeling.
 
 RSTA augments Transformer systems with:
 
