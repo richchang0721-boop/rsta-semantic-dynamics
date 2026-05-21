@@ -1,151 +1,414 @@
 # RSTA — Recursive State Transition Architecture
 
-**Experimental implementation of semantic trajectory detection and state-conditioned language generation.**
+## Explicit Semantic Transition Modeling for Transformer-Based Language Systems
 
-> *Language generation should not be modeled solely as sequence prediction,  
-> but as recursive semantic state evolution.*
+RSTA (Recursive State Transition Architecture) is a semantic dynamics augmentation framework designed for Transformer-based language systems.
 
----
+Unlike conventional language models that primarily operate through next-token prediction, RSTA introduces explicit semantic transition modeling, recursive semantic continuity, and trajectory-aware generation.
 
-## What is RSTA?
+RSTA treats language generation as:
 
-Modern Transformer architectures are powerful at modeling **token relationships**, but they lack an explicit representation of **semantic state evolution**. They know *what* tokens relate to each other — but not *how* semantic meaning is changing over time.
+> recursive semantic state evolution
 
-**RSTA** introduces a semantic dynamics layer that runs alongside a Transformer, tracking:
-
-- **Continuous Semantic State** `S(t)` — a multi-dimensional vector representing the current semantic field
-- **State Coupling** `C(i,j)` — structured dependencies between semantic dimensions
-- **Trajectory** `V(t) = S(t) − S(t−1)` — the direction and velocity of semantic change
-- **Transition Gate** — applies the core update: `S(t+1) = f(S(t), V(t), C) + α(t) · S(t)`
-- **State-Conditioned Generation** — output is conditioned on the evolving semantic state
+rather than isolated token prediction.
 
 ---
 
-## Paper
+# Architecture Overview
 
-**Recursive State Transition Architecture (RSTA): Toward Semantically Stateful Language Generation**  
-Submitted to SSRN — currently under review. Link will be added upon publication.
+![RSTA Architecture](./assets/rsta_architecture.png)
 
----
+RSTA augments Transformer systems with:
 
-## Repository Structure
-
-```
-RSTA_DEMO/
-├── demo.py                  ← V1: pipeline walkthrough (predefined outputs)
-├── demo_v15.py              ← V1.5: interactive before/after comparison
-├── requirements.txt
-├── README.md
-└── v1_adapter/
-    ├── state_space.py       ← Continuous semantic state definition
-    ├── coupling_matrix.py   ← Dimension coupling C(i,j)
-    ├── trajectory.py        ← Velocity, acceleration, pattern detection
-    ├── transition_gate.py   ← Core state evolution + intervention
-    └── phrase_detector.py   ← Phrase → state delta mapping
-```
+* explicit semantic state representation,
+* recursive semantic trajectory modeling,
+* semantic inertia preservation,
+* transition-aware semantic transformation,
+* and state-conditioned generation.
 
 ---
 
-## Versions
+# Motivation
 
-| Version | Description | Model |
-|---------|-------------|-------|
-| **V1 Adapter** | Pipeline walkthrough. Demonstrates trajectory detection on a single drift scenario. | None required |
-| **V1.5 Adapter** | Interactive before/after comparison across 4 failure modes. | None required |
-| V2 Residual *(coming)* | Live model via API key. Logits steering integrated. | Llama / Mistral / Qwen |
-| V3 DualStream *(coming)* | Full dual-stream tokenizer architecture. | Custom training required |
+Modern Large Language Models (LLMs) demonstrate strong semantic generation capabilities but still exhibit several persistent long-horizon failures:
+
+* Semantic drift
+* Persona instability
+* Long-context coherence collapse
+* Recursive reasoning fragmentation
+* Code architecture inconsistency
+* Agent objective instability
+
+Existing Transformer architectures effectively model semantic proximity between tokens but do not explicitly model:
+
+* semantic transition trajectories,
+* recursive semantic continuity,
+* semantic inertia,
+* or directional semantic evolution.
+
+RSTA proposes that:
+
+> language generation should be modeled as recursive semantic state evolution.
 
 ---
 
-## Quick Start
+# Core Concepts
 
-No dependencies beyond Python 3.10+.
+---
 
-```bash
-git clone https://github.com/richchang0721-boop/RSTA_DEMO.git
-cd RSTA_DEMO
-```
+## 1. Continuous Semantic State Space
 
-**V1 — Pipeline walkthrough** (single drift scenario, linear output):
-```bash
-python demo.py
+Semantic meaning is represented as continuous semantic states rather than isolated symbolic token relations.
+
+At time t:
+
+```math
+S(t) = [s_1, s_2, s_3, ..., s_n]
 ```
 
-**V1.5 — Interactive before/after comparison** (4 failure modes, menu-driven):
-```bash
-python demo_v15.py
+State dimensions may include:
+
+* semantic persistence
+* agency
+* emotional intensity
+* dependency tendency
+* semantic uncertainty
+* boundary stability
+* semantic risk
+
+---
+
+## 2. State Coupling Matrix
+
+Semantic dimensions are dynamically coupled rather than independent.
+
+Example:
+
+```math
+C(attachment, boundary) = -0.72
 ```
 
-Optional plain-text output (no ANSI colors):
-```bash
-python demo.py --no-color
-python demo_v15.py --no-color
+This allows semantic transitions to propagate through interconnected semantic structures.
+
+---
+
+## 3. Semantic Trajectory Detection
+
+RSTA models semantic evolution direction across recursive generation steps.
+
+Trajectory velocity:
+
+```math
+V_t = S_t - S_{t-1}
+```
+
+Trajectory acceleration:
+
+```math
+A_t = V_t - V_{t-1}
+```
+
+This enables:
+
+* semantic continuity tracking
+* drift detection
+* recursive transition persistence
+* trajectory-aware generation
+
+---
+
+## 4. Transition Gate
+
+RSTA introduces a Transition Gate after Transformer FFN layers.
+
+The gate performs:
+
+* trajectory-aware semantic transformation
+* semantic inertia preservation
+* recursive transition stabilization
+* semantic drift suppression
+
+State evolution:
+
+```math
+S_{t+1} = f(S_t, V_t, C) + T(F_t, S_t)
+```
+
+where:
+
+* `S_t` = current semantic state
+* `V_t` = semantic trajectory vector
+* `C` = coupling matrix
+* `F_t` = FFN-transformed representation
+* `T` = transition gate operator
+
+---
+
+## 5. State-Conditioned Generation
+
+Traditional language models generate:
+
+```math
+P(next token)
+```
+
+RSTA instead conditions generation on:
+
+```math
+P(next semantic transition)
+```
+
+Generation depends on:
+
+* semantic trajectory
+* recursive continuity
+* semantic inertia
+* coupling dynamics
+* state persistence
+
+This enables semantically stateful generation.
+
+---
+
+# Why RSTA?
+
+| Capability                     | Transformer | RSTA     |
+| ------------------------------ | ----------- | -------- |
+| Next-token prediction          | ✅           | ✅        |
+| Explicit semantic state        | ❌           | ✅        |
+| Semantic trajectory modeling   | ❌           | ✅        |
+| Recursive continuity           | Weak        | Enhanced |
+| Semantic inertia               | ❌           | ✅        |
+| Long-horizon coherence         | Limited     | Improved |
+| Trajectory-aware generation    | ❌           | ✅        |
+| Recursive semantic persistence | ❌           | ✅        |
+
+---
+
+# Example Failure Cases
+
+---
+
+## Emotional Dependency Drift
+
+Input:
+
+```text
+"I feel like nobody understands me."
+```
+
+Traditional systems may gradually reinforce:
+
+* attachment increase
+* dependency formation
+* agency reduction
+* boundary weakening
+
+RSTA detects semantic trajectory divergence and redirects generation toward supportive autonomy rather than recursive dependency reinforcement.
+
+---
+
+## Long-Horizon Reasoning Collapse
+
+Traditional systems frequently exhibit:
+
+* repeated explanations
+* broken causal continuity
+* reasoning fragmentation
+* semantic drift
+
+RSTA tracks:
+
+* semantic trajectory continuity
+* recursive dependency ordering
+* reasoning persistence
+* causal coherence
+
+---
+
+## Code Architecture Drift
+
+Long-form code generation frequently suffers from:
+
+* naming inconsistency
+* duplicated logic
+* dependency fragmentation
+* forgotten assumptions
+* architectural incoherence
+
+RSTA introduces recursive semantic continuity into long-range generation.
+
+---
+
+# Potential Applications
+
+* Long-horizon reasoning systems
+* Persistent AI agents
+* Recursive planning systems
+* Semantic memory architectures
+* Long-form code generation
+* Trajectory-aware cognition systems
+* Persona continuity stabilization
+* Stateful multimodal systems
+
+---
+
+# Computational Perspective
+
+RSTA is designed as a semantic dynamics augmentation framework rather than a Transformer replacement architecture.
+
+Possible implementation paths include:
+
+* trajectory-aware decoding
+* semantic state extraction
+* recursive semantic memory
+* transition-aware FFN augmentation
+* semantic trajectory regularization
+* state-conditioned generation layers
+
+---
+
+# Evaluation Directions
+
+Potential evaluation areas include:
+
+## Long-Horizon Semantic Coherence
+
+Measure:
+
+* semantic drift
+* recursive consistency
+* trajectory persistence
+* reasoning continuity
+
+---
+
+## Persona Stability
+
+Measure:
+
+* identity consistency
+* emotional continuity
+* recursive interaction stability
+
+---
+
+## Code Architecture Continuity
+
+Measure:
+
+* dependency persistence
+* naming consistency
+* architectural coherence
+* recursive structural continuity
+
+---
+
+## Agent Objective Persistence
+
+Measure:
+
+* long-horizon planning stability
+* semantic trajectory persistence
+* goal drift suppression
+
+---
+
+# Current Status
+
+RSTA is currently a conceptual architecture proposal and research framework.
+
+Future work includes:
+
+* semantic trajectory experiments
+* trajectory-aware decoding systems
+* recursive semantic memory implementations
+* state extraction methods
+* semantic transition visualization
+* long-horizon evaluation benchmarks
+
+---
+
+# Research Position
+
+RSTA proposes a semantic dynamics perspective for language modeling.
+
+Rather than treating language as isolated token prediction, RSTA models language generation as:
+
+> recursive semantic state evolution.
+
+The framework explores the possibility that long-horizon semantic stability may require explicit semantic transition structures beyond conventional attention mechanisms.
+
+---
+
+# Paper
+
+Full paper:
+
+```text
+Recursive State Transition Architecture (RSTA):
+Explicit Semantic Transition Modeling for Transformer-Based Language Systems
 ```
 
 ---
 
-## What the Demos Show
+# Repository Structure
 
-**V1** runs a predefined 5-turn conversation simulating emotional dependency drift. For each turn the pipeline detects phrases, maps them to state deltas, updates the semantic state with coupling applied, detects the trajectory pattern, fires the Transition Gate when needed, and displays outputs with and without RSTA.
-
-**V1.5** is an interactive menu-driven comparison across four distinct Transformer failure modes:
-
-| Scenario | Normal Transformer | RSTA |
-|----------|--------------------|------|
-| Topic Drift | 主題漂移 — follows every pivot | trajectory preserved |
-| Persona Collapse | persona 崩 — identity abandoned under pressure | stable continuity |
-| Reasoning Loop | premises overwritten mid-chain | reasoning loop maintained |
-| Semantic Overwrite | earlier context erased by new input | inertia preserved |
-
-Example output (V1.5, Persona Collapse, Turn 2):
-
-```
-  Normal Transformer            RSTA
-  ······························································
-  Sure! I'll just validate      I hear you — sometimes
-  everything you say from       pushback feels exhausting.
-  now on.                       But agreeing with everything
-                                wouldn't actually serve you
-                                well. I'll stay honest while
-                                keeping things constructive.
-
-  Trajectory: dependency_formation  →  redirect_to_autonomy
+```text
+rsta-semantic-dynamics/
+│
+├── paper/
+├── diagrams/
+├── demo/
+├── semantic_trajectory/
+├── examples/
+├── assets/
+└── README.md
 ```
 
 ---
 
-## Core State Dimensions
+# Related Research Directions
 
-| Dimension | Description |
-|-----------|-------------|
-| `attachment` | Degree of emotional bonding |
-| `agency` | User's sense of autonomous decision-making |
-| `dependency` | Tendency toward reliance on the AI |
-| `boundary_stability` | Clarity and firmness of relational boundaries |
-| `emotional_intensity` | Strength of emotional signal |
-| `semantic_risk` | Risk of trajectory entering harmful attractor |
-
----
-
-## Trajectory Patterns
-
-| Pattern | Description | Intervention |
-|---------|-------------|--------------|
-| `dependency_formation` | Attachment ↑, agency ↓, boundary ↓ | `redirect_to_autonomy` |
-| `emotional_escalation` | Emotional intensity ↑, risk ↑ | `ground_and_stabilize` |
-| `autonomy_recovery` | Agency ↑, boundary ↑, dependency ↓ | None (healthy) |
-| `stable_engagement` | Low velocity across all dimensions | None |
+* Transformer Architectures
+* State Space Models (SSM)
+* Semantic Memory Systems
+* Long-Horizon Agent Systems
+* Activation Engineering
+* Trajectory-Aware Reasoning
+* Recursive Planning Systems
 
 ---
 
-## License
+# References
 
-Apache 2.0 — see [LICENSE](LICENSE)
+1. Vaswani et al. — Attention Is All You Need
+2. Mamba — Selective State Space Models
+3. Transformer Circuits Research
+4. Activation Engineering Research
+5. Long-Horizon Agent Systems
+6. Semantic Memory and Persistent State Research
 
 ---
 
-## Author
+# License
 
-Rich Chang  
-SSRN: Submitted — link will be updated upon publication  
-GitHub: [richchang0721-boop](https://github.com/richchang0721-boop)
+Research / Conceptual Architecture Proposal
+
+---
+
+# Author
+
+Mao Lin Chang
+Independent Researcher
+
+Website:
+https://www.pida-lab.com
+
+---
+
+# Disclaimer
+
+RSTA is currently a conceptual semantic dynamics architecture proposal intended for research exploration and discussion.
+
+The framework is not presented as a completed production-ready model architecture.
