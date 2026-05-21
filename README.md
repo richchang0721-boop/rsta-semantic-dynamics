@@ -450,7 +450,7 @@ Full paper:
 
 The complete RSTA research paper is available below:
 
-[Recursive State Transition Architecture (RSTA) Paper](./paper/rsta_paper_v1.pdf)
+[Recursive State Transition Architecture (RSTA) Paper](./paper/rsta_paper_latest.pdf)
 
 ---
 
