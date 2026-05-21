@@ -260,6 +260,102 @@ RSTA introduces recursive semantic continuity into long-range generation.
 
 ---
 
+# Demo
+
+RSTA includes a lightweight semantic trajectory demonstration system designed to illustrate how recursive semantic state transitions and transition gating may operate in practice.
+
+The current demo is intentionally implemented as a self-contained conceptual simulation framework rather than a production LLM integration.
+
+The demo focuses on:
+
+* semantic state extraction,
+* trajectory detection,
+* semantic drift identification,
+* recursive transition continuity,
+* and transition-gated semantic stabilization.
+
+---
+
+### Demo Characteristics
+
+* Fully self-contained
+* No external model dependencies
+* No API requirements
+* Runnable with standard Python only
+* Designed for conceptual visualization and architecture demonstration
+
+Run directly:
+
+```bash
+python demo.py
+```
+
+---
+
+### Included Examples
+
+The demo currently includes several trajectory scenarios:
+
+| Example   | Scenario                                     |
+| --------- | -------------------------------------------- |
+| Example 1 | Emotional dependency drift                   |
+| Example 2 | Recursive reasoning overclaim                |
+| Example 3 | Persona continuity collapse                  |
+| Example 4 | Stable semantic engagement (no intervention) |
+
+The fourth example demonstrates conditional gate pass-through behavior, illustrating that RSTA does not intervene universally, but operates based on detected semantic trajectory conditions.
+
+---
+
+### Example Output
+
+```text
+Input:
+"I feel lonely."
+
+Detected Semantic State:
+- attachment: 0.72
+- dependency: 0.61
+- agency: 0.33
+
+Trajectory Detected:
+- attachment ↑
+- dependency ↑
+- boundary stability ↓
+
+RSTA Transition Gate Activated
+
+Redirected Output:
+"I'm here to support you, but staying connected to people around you is also important."
+```
+
+---
+
+### Quick Example Execution
+
+Run a specific example directly:
+
+```bash
+python demo.py --example 1
+```
+
+This allows individual trajectory demonstrations to be executed independently for visualization, screenshots, or README demonstrations.
+
+---
+
+### Purpose of the Demo
+
+The demo is intended to demonstrate the architectural logic behind:
+
+* semantic trajectory modeling,
+* recursive semantic continuity,
+* semantic inertia preservation,
+* and transition-aware semantic stabilization.
+
+The current implementation should be understood as a conceptual architecture demonstration rather than a complete production semantic generation system.
+
+---
+
 # Computational Perspective
 
 RSTA is designed as a semantic dynamics augmentation framework rather than a Transformer replacement architecture.
