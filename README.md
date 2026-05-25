@@ -501,7 +501,7 @@ Research / Conceptual Architecture Proposal
 
 # Author
 
-Mao Lin Chang
+Mao Lin Chang (Yifei Shang)
 Independent Researcher
 
 Website:
