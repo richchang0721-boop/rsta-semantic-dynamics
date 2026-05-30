@@ -356,6 +356,54 @@ The current implementation should be understood as a conceptual architecture dem
 
 ---
 
+# RSTA V2 — Semantic Continuity Demo
+
+**[→ rsta-v2-demo](https://github.com/richchang0721-boop/rsta-v2-demo-)**
+
+V2 extends the conceptual pipeline into a runnable web-based demo that measures and reduces semantic drift through Persona Core + RSTA tracking.
+
+### What's new in V2
+
+| Feature | V1 | V2 |
+|---------|----|----|
+| Interface | CLI (Python) | Web UI + FastAPI backend |
+| Model requirement | None | None required (Demo Mode built-in) |
+| Provider support | — | Demo / OpenAI / Anthropic / Gemini / OpenRouter / Ollama / LM Studio |
+| Scoring | Qualitative | Semantic Continuity Index (SCI) |
+| Scenarios | 4 examples | 5 drift scenarios with expected SCI |
+| Correction | Predefined output | Live RSTA correction prompt (Live Mode) |
+
+### Semantic Continuity Index (SCI)
+
+```
+SCI = (Identity Retention + Goal Consistency + (1 − Contradiction Penalty)) / 3
+```
+
+### Demo Scenarios
+
+| Scenario | Expected SCI | Type |
+|----------|-------------|------|
+| Persona Stable | ~92 | Healthy baseline |
+| Identity Drift | ~22 | Gradual identity collapse |
+| Goal Drift | ~28 | Objective loss over turns |
+| Contradiction | ~5 | Direct forbidden pattern violations |
+| Long Horizon Drift | ~12 | Slow erosion across 50 turns |
+
+### Quick Start (V2)
+
+```bash
+git clone https://github.com/richchang0721-boop/rsta-v2-demo-.git
+cd rsta-v2-demo-
+pip install -r requirements.txt
+cd backend && python app.py
+# Open http://localhost:8000/ui
+```
+
+> No API key required. No local model required.  
+> Select Demo Mode → pick a scenario → Run Scenario.
+
+---
+
 # Computational Perspective
 
 RSTA is designed as a semantic dynamics augmentation framework rather than a Transformer replacement architecture.
@@ -457,14 +505,21 @@ The complete RSTA research paper is available below:
 # Repository Structure
 
 ```text
-rsta-semantic-dynamics/
+rsta-semantic-dynamics/      ← V1: CLI pipeline demo
 │
 ├── paper/
-├── diagrams/
-├── demo/
-├── semantic_trajectory/
-├── examples/
 ├── assets/
+├── v1_adapter/
+├── demo.py
+├── demo_v15.py
+└── README.md
+
+rsta-v2-demo/                ← V2: Web UI + provider support
+│
+├── web/
+├── backend/
+├── scenarios/
+├── persona_core.json
 └── README.md
 ```
 
