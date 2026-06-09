@@ -494,11 +494,13 @@ The framework explores the possibility that long-horizon semantic stability may 
 
 # Paper
 
-Full paper:
+**Recursive State Transition Architecture (RSTA):
+Explicit Semantic Transition Modeling for Transformer-Based Language Systems**
 
-The complete RSTA research paper is available below:
+Published on Zenodo:
+[https://doi.org/10.5281/zenodo.20603119](https://doi.org/10.5281/zenodo.20603119)
 
-[Recursive State Transition Architecture (RSTA) Paper](./paper/rsta_paper_latest.pdf)
+ORCID: [0009-0000-2111-3328](https://orcid.org/0009-0000-2111-3328)
 
 ---
 
